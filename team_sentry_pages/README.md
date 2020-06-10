@@ -11,9 +11,13 @@ $ pip install -r requirements.txt
 $ python manage.py runserver
 ```
 >System check identified no issues (0 silenced).
+
 >June 10, 2020 - 03:04:21
+
 >Django version 2.2.6, using settings 'core.settings'
+
 >Starting development server at http://127.0.0.1:8000/
+
 >Quit the server with CONTROL-C.
 
 click on the address to redirect to home page.
