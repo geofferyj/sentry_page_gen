@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from site_pages.views import *
 from django.urls import path, include
 import site_pages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', site_pages.views.index, name = "index"),
     path('pcreator/api/v1/', include('site_pages.urls'))
 ]

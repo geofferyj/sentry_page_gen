@@ -33,7 +33,8 @@ Password: admin
 
 ### Routes
 
-* List Pages:```127.0.0:8000/list-pages/```
-* Add Pages: ```127.0.0:8000/add-page/```
+* List Pages:```127.0.0:8000/pcreator/api/v1/```
+* Add Pages: ```127.0.0:8000/pcreator/api/v1/add-page/```
 * Set Page Markdown: ```127.0.0.1:8000/set-page-markdown/<int:pk>/```   
 * Get Page HTML: ```127.0.0.1:8000get-page-html/<int:pk>/```
+>NOTE: "int:pk" means id. 

@@ -4,6 +4,12 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAP
 from  markdown import Markdown
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import render
+
+#index page
+def index(request):
+
+    return render(request, 'index.html')
 
 class AddPageView(CreateAPIView):
     queryset = Page.objects.all()
