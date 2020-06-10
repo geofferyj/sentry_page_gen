@@ -1,14 +1,12 @@
-FROM python:3.7
-
-ENV APP_ROOT /src
-ENV CONFIG_ROOT /config
-
-
-RUN mkdir ${CONFIG_ROOT}
-COPY /team_sentry_pages/requirements.txt ${CONFIG_ROOT}/requirements.txt
-RUN pip install -r ${CONFIG_ROOT}/requirements.txt
-
-RUN mkdir ${APP_ROOT}
-WORKDIR ${APP_ROOT}
-
-ADD /team_sentry_pages/ ${APP_ROOT}
+FROM python:3.7-alpine
+ENV PYTHONUNBUFFERED 1
+ 
+RUN apk update && \
+    apk add --virtual build-deps gcc python3-dev musl-dev && \
+    apk add postgresql-dev bash
+ 
+RUN mkdir /config
+ADD /config/requirements.txt /config/
+RUN pip install -r /config/requirements.txt
+RUN mkdir /src
+WORKDIR /src
