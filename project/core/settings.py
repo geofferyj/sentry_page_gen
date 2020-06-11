@@ -1,5 +1,5 @@
 
-# # __________________ DEVELOPMENT CONFIG ____________________________
+# __________________ DEVELOPMENT CONFIG ____________________________
 
 
 # """
@@ -33,7 +33,7 @@
 # # DEBUG can be True/False or 1/0
 # # DEBUG = False 
 # # ALLOWED_HOSTS = ['web']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
 
 
 # # Application definition
@@ -140,6 +140,11 @@
 # STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles'),] 
+
+
+
+
+
 
 
 
