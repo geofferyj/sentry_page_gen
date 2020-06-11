@@ -1,13 +1,25 @@
 from django.db import models
+from django.utils.text import  slugify
+import random
+import string
+
+def gen_id(ln=5):
+    ld = string.ascii_letters + string.digits
+    return '-'+''.join((random.choice(ld) for i in range(ln)))
 
 
 class Page(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200, unique=True)
     author = models.CharField(max_length=100, blank=True, null=True)
     date_created = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=200, blank=True, null=True)
     tags = models.CharField(max_length=200, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title) + gen_id()
+        super().save(*args, **kwargs) # Call the real save() method
 
     def __str__(self):
         return self.title

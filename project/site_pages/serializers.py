@@ -26,6 +26,7 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = '__all__'
+        read_only_fields = ['slug']
 
 
     def create(self, validated_data):

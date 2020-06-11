@@ -55,7 +55,10 @@ class PageContentView(RetrieveAPIView):
         scripts = page.scripts.all()
         if scripts:
             for entry in scripts:
-                t.append("<script src='{}'>{}</script>".format(entry.src, entry.body))
+                if entry.src:
+                    t.append("<script src='{}'></script>".format(entry.src))
+                else:
+                    t.append("<script>{}</script>".format(entry.body))
             return "".join([i for i in t])
         return ""
 
@@ -78,13 +81,24 @@ class PageContentView(RetrieveAPIView):
         md = Markdown()
         content = md.convert(page.content)
         template = f"<!doctype html><html lang='en'><head><title>{page.title}</title>{self.get_meta(pk)}{self.get_css(pk)}</head><body>{content}{self.get_script(pk)}</body></html>"
-        
+        slug_id = page.slug[-5:]
+        page_name = page.slug[:len(page.slug) - 5][:19] + "-"+slug_id + ".html"
+        location = "static/pages/"
+        with open(location + page_name, 'w+') as file:
+            file.write(template)
+
+
+
         data = {
             'id':page.id, 
+            'slug':page.slug,
             'title':page.title, 
+            'url': location + page_name,
             'date_created':page.date_created, 
+            'author':page.author,
             'category':page.category, 
             'tags':page.tags,
+            'content':page.content,
             'html': template}
         return Response(data=data, status=status.HTTP_200_OK,)
 
