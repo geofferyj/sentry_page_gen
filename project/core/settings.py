@@ -152,7 +152,7 @@
 
 
 
-# __________________ PRODUCTION CONFIG ____________________________
+__________________ PRODUCTION CONFIG ____________________________
 
 """
 Django settings for core project.
