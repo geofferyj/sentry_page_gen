@@ -69,7 +69,6 @@ class PageContentView(RetrieveAPIView):
         if css:
             for entry in css:
                 t.append("<link rel='{}' href='{}'>".format(entry.rel, entry.href))
-                print("entry css ",entry)
             return "".join([i for i in t])
         return ""
         
@@ -83,7 +82,7 @@ class PageContentView(RetrieveAPIView):
         template = f"<!doctype html><html lang='en'><head><title>{page.title}</title>{self.get_meta(pk)}{self.get_css(pk)}</head><body>{content}{self.get_script(pk)}</body></html>"
         slug_id = page.slug[-5:]
         page_name = page.slug[:len(page.slug) - 5][:19] + "-"+slug_id + ".html"
-        location = "static/pages/"
+        location = "pages/"
         with open(location + page_name, 'w+') as file:
             file.write(template)
 
