@@ -2,10 +2,10 @@ version: '3'
 services:
    db:
      image: postgres:10.3-alpine
-     container_name: postgres01
+     container_name: postgres_db
    nginx:
      image: nginx:1.13-alpine
-     container_name: nginx01
+     container_name: nginx_server
      ports:
        - "8000:8000"
      volumes:
@@ -15,7 +15,7 @@ services:
        - web
    web:
      build: .
-     container_name: django01
+     container_name: django_project
      command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi -b 0.0.0.0:8000"
      depends_on:
        - db
