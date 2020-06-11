@@ -7,7 +7,7 @@ services:
      image: nginx:1.13-alpine
      container_name: nginx_server
      ports:
-       - "8000:8000"
+       - "10001:10001"
      volumes:
        - ./project:/src
        - ./config/nginx:/etc/nginx/conf.d
@@ -22,5 +22,5 @@ services:
      volumes:
        - ./project:/src
      expose:
-       - "8000"
+       - "10001"
      restart: always
