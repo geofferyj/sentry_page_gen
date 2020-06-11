@@ -2,12 +2,12 @@ version: '3'
 services:
    db:
      image: postgres:10.3-alpine
-     container_name: postgres_db
+     container_name: postgres01
    nginx:
      image: nginx:1.13-alpine
-     container_name: nginx_server
+     container_name: nginx01
      ports:
-       - "10001:10001"
+       - "10001:80"
      volumes:
        - ./project:/src
        - ./config/nginx:/etc/nginx/conf.d
@@ -15,12 +15,12 @@ services:
        - web
    web:
      build: .
-     container_name: django_project
-     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi -b 0.0.0.0:10001"
+     container_name: django01
+     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi -b 0.0.0.0:8080"
      depends_on:
        - db
      volumes:
        - ./project:/src
      expose:
-       - "10001"
+       - "8080"
      restart: always
