@@ -26,20 +26,22 @@ class AddPageView(CreateAPIView):
 class ListPageView(ListAPIView):
     queryset = Page.objects.all()
     serializer_class = PageSerializer 
+    lookup_field = 'slug'
 
 class UpdatePageView(RetrieveUpdateAPIView):
     queryset = Page.objects.all()
     serializer_class = PageUpdateSerializer  
-
+    lookup_field = 'slug'
     
 
 class PageContentView(RetrieveAPIView):
     queryset = Page.objects.all()
     serializer = PageSerializer
+    lookup_field = 'slug'
 
 
-    def get_meta(self, pk):
-        page = Page.objects.get(pk=pk)
+    def get_meta(self, slug):
+        page = Page.objects.get(slug=slug)
         t = []
         meta = page.meta_tags.all()
         if meta:
@@ -49,8 +51,8 @@ class PageContentView(RetrieveAPIView):
             return "".join([i for i in t]) 
         return ""
     
-    def get_script(self, pk):
-        page = Page.objects.get(pk=pk)
+    def get_script(self, slug):
+        page = Page.objects.get(slug=slug)
         t = []
         scripts = page.scripts.all()
         if scripts:
@@ -62,8 +64,8 @@ class PageContentView(RetrieveAPIView):
             return "".join([i for i in t])
         return ""
 
-    def get_css(self, pk):
-        page = Page.objects.get(pk=pk)
+    def get_css(self, slug):
+        page = Page.objects.get(slug=slug)
         t = []
         css = page.css.all()
         if css:
@@ -72,14 +74,14 @@ class PageContentView(RetrieveAPIView):
             return "".join([i for i in t])
         return ""
         
-    def get(self, request, pk):
+    def get(self, request, slug):
         try:
-            page = Page.objects.get(pk=pk)
+            page = Page.objects.get(slug=slug)
         except Page.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         md = Markdown()
         content = md.convert(page.content)
-        template = f"<!doctype html><html lang='en'><head><title>{page.title}</title>{self.get_meta(pk)}{self.get_css(pk)}</head><body>{content}{self.get_script(pk)}</body></html>"
+        template = f"<!doctype html><html lang='en'><head><title>{page.title}</title>{self.get_meta(slug)}{self.get_css(slug)}</head><body>{content}{self.get_script(slug)}</body></html>"
         slug_id = page.slug[-5:]
         page_name = page.slug[:len(page.slug) - 5][:19] + "-"+slug_id + ".html"
         location = "pages/"

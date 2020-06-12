@@ -23,6 +23,7 @@ class PageSerializer(serializers.ModelSerializer):
     meta_tags = MetaTagSerializer(many=True)
     scripts = ScriptSerializer(many=True)
     css = CSSSerializer(many=True)
+    lookup_field = 'slug'
     class Meta:
         model = Page
         fields = '__all__'
@@ -49,6 +50,7 @@ class PageSerializer(serializers.ModelSerializer):
 
 
 class PageUpdateSerializer(serializers.ModelSerializer):
+    lookup_field = 'slug'
     class Meta:
         model = Page
         fields = ['content']
