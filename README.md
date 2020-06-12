@@ -32,8 +32,8 @@ Password: admin
 >Credentials will be change on deployment for security reasons.
 
 ### Routes
-* Register Page: 
-* Login Page:
+* Register Page: ```pages.microapi.dev```
+* Login Page: ```pages.microapi.dev```
 * List Pages:```127.0.0:8000/pcreator/v1/```
 * Add Pages: ```127.0.0:8000/pcreator/v1/add-page/```
 * Set Page Markdown: ```127.0.0.1:8000/v1/set-page-markdown/<int:pk>/```   
