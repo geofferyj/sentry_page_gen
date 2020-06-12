@@ -1,0 +1,61 @@
+{
+  "head": {
+    "title": "",
+    "meta": [],
+    "link": [],
+    "script": []
+  },
+  "headers": [
+    {
+      "tagName": "h1",
+      "textContent": "REPO: teamsentrypages",
+      "attributes": {
+        "id": "repoteam_sentry_pages"
+      }
+    },
+    {
+      "tagName": "h2",
+      "textContent": "Admin Route..",
+      "attributes": {
+        "id": "adminroute"
+      }
+    },
+    {
+      "tagName": "h3",
+      "textContent": "Installing requirements.",
+      "attributes": {
+        "id": "installingrequirements"
+      }
+    },
+    {
+      "tagName": "h3",
+      "textContent": "Running server.",
+      "attributes": {
+        "id": "runningserver"
+      }
+    },
+    {
+      "tagName": "h3",
+      "textContent": "Routes",
+      "attributes": {
+        "id": "routes"
+      }
+    },
+    {
+      "tagName": "h3",
+      "textContent": "User auth",
+      "attributes": {
+        "id": "userauth"
+      }
+    }
+  ],
+  "jsonLd": [],
+  "forms": [],
+  "tables": [],
+  "iframes": [],
+  "embeds": [],
+  "imgs": [],
+  "links": [],
+  "content": "REPO: teamsentrypages\nInstalling requirements.\n$ cd team_sentry_pages\n$ pip install -r requirements.txt\nwill install all necessary dependencies.\nRunning server.\n$ python manage.py runserver\nSystem check identified no issues (0 silenced).\nJune 10, 2020 - 03:04:21\nDjango version 2.2.6, using settings 'core.settings'\nStarting development server at http://127.0.0.1:8000/\nQuit the server with CONTROL-C.\nclick on the address to redirect to home page.\nAdmin Route..\n### Admin interface login\nsh\nUsername: admin\nPassword: admin\n```\nCredentials will be change on deployment for security reasons.\nRoutes\nList Pages:127.0.0:8000/pcreator/v1/\nAccepts get method\nAdd Pages: 127.0.0:8000/pcreator/v1/add-page/\nAccepts post method only\nSet Page Markdown: 127.0.0.1:8000/v1/set-page-markdown/<int:pk>/\nAccepts get put and patch methods\nGet Page HTML: 127.0.0.1:8000/v1/get-page-html/<int:pk>/\nAccepts get method\nget page html will return the html of the page and also generate the file and save on the server.\nAccessible at pages.microapi.dev/pages/page-slug/\nNOTE: \"int:pk\" means id.\nUser auth\nRegister: 127.0.0:800/v1/register\nNOTE: You will not be logged in automatically\nAccepts only post method\nLogin: 127.0.0:800/v1/login\nThe login page takes two parameters;Username and password\nAccepts only post method\nA token will be assigned upon login if the user exists. Else an error will be returned",
+  "datetime": null
+}</int:pk></int:pk>
