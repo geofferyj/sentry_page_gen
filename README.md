@@ -38,3 +38,11 @@ Password: admin
 * Set Page Markdown: ```127.0.0.1:8000/v1/set-page-markdown/<int:pk>/```   
 * Get Page HTML: ```127.0.0.1:8000/v1/get-page-html/<int:pk>/```
 >NOTE: "int:pk" means id. 
+
+### User auth
+* Register: ```127.0.0:800/v1/register```
+> NOTE: You will not be logged in automatically
+* Login: ```127.0.0:800/v1/login```
+>The login page takes two parameters;Username and password
+
+>A token will be assigned upon login if the user exists. Else an error will be returned 
