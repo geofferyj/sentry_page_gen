@@ -35,6 +35,6 @@ Password: admin
 
 * List Pages:```127.0.0:8000/pcreator/api/v1/```
 * Add Pages: ```127.0.0:8000/pcreator/api/v1/add-page/```
-* Set Page Markdown: ```127.0.0.1:8000/set-page-markdown/<int:pk>/```   
-* Get Page HTML: ```127.0.0.1:8000get-page-html/<int:pk>/```
+* Set Page Markdown: ```127.0.0.1:8000/api/v1/set-page-markdown/<int:pk>/```   
+* Get Page HTML: ```127.0.0.1:8000/api/v1/get-page-html/<int:pk>/```
 >NOTE: "int:pk" means id. 
