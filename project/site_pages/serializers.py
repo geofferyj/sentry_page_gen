@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from site_pages.models import Page, MetaTag, CSS, ScriptTag
+from django.contrib.auth.models import User
 
 
 
@@ -54,3 +55,14 @@ class PageUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = ['content']
+
+
+class RegisterSerialiazer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
+        return user

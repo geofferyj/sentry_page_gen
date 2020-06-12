@@ -1,5 +1,5 @@
 from site_pages.models import Page, MetaTag
-from site_pages.serializers import PageSerializer, PageUpdateSerializer
+from site_pages.serializers import PageSerializer, PageUpdateSerializer, RegisterSerialiazer
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView, RetrieveAPIView
 from  markdown import Markdown
 from rest_framework.permissions import IsAuthenticated 
@@ -105,3 +105,14 @@ class PageContentView(RetrieveAPIView):
             'html': template}
         return Response(data=data, status=status.HTTP_200_OK,)
 
+class UserCreationView(CreateAPIView):
+    serializer_class = RegisterSerialiazer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user": RegisterSerialiazer(user, context=self.get_serializer_context()).data,
+
+        })
