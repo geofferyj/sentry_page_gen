@@ -52,7 +52,7 @@ Password: admin
 > NOTE: You will not be logged in automatically
 >Accepts only post method
 * Login: ```127.0.0:800/v1/login```
->The login page takes two parameters;Username and password
+>The login page takes two parameters which are Username and password
 >Accepts only post method
 
 >A token will be assigned upon login if the user exists. Else an error will be returned 
