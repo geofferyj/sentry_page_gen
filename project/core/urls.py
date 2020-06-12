@@ -19,5 +19,5 @@ import site_pages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('site_pages.urls'))
+    path('v1/', include('site_pages.urls'))
 ]

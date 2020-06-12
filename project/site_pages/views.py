@@ -2,10 +2,12 @@ from site_pages.models import Page, MetaTag
 from site_pages.serializers import PageSerializer, PageUpdateSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView, RetrieveAPIView
 from  markdown import Markdown
+from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework import status
 
 class AddPageView(CreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Page.objects.all()
     serializer_class = PageSerializer
 
