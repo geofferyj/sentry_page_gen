@@ -1,0 +1,93 @@
+<h1 id="repoteam_sentry_pages">REPO: team<em>sentry</em>pages</h1>
+
+<h3 id="installingrequirements">Installing requirements.</h3>
+
+<pre><code class=" sh language- sh">$ cd team_sentry_pages
+$ pip install -r requirements.txt
+</code></pre>
+
+<blockquote>
+  <p>will install all necessary dependencies.</p>
+
+  <h3 id="runningserver">Running server.</h3>
+</blockquote>
+
+<pre><code class=" sh language- sh">$ python manage.py runserver
+</code></pre>
+
+<blockquote>
+  <p>System check identified no issues (0 silenced).</p>
+
+  <p>June 10, 2020 - 03:04:21</p>
+
+  <p>Django version 2.2.6, using settings 'core.settings'</p>
+
+  <p>Starting development server at http://127.0.0.1:8000/</p>
+
+  <p>Quit the server with CONTROL-C.</p>
+</blockquote>
+
+<p>click on the address to redirect to home page.</p>
+
+<h2 id="adminroute">Admin Route..</h2>
+
+<pre><code class="127.0.0.1/admin/``` language-127.0.0.1/admin/```">### Admin interface login
+</code></pre>
+
+<p>sh
+Username: admin
+Password: admin
+```</p>
+
+<blockquote>
+  <p>Credentials will be change on deployment for security reasons.</p>
+</blockquote>
+
+<h3 id="routes">Routes</h3>
+
+<ul>
+<li>List Pages:<code>127.0.0:8000/pcreator/v1/</code></li>
+</ul>
+
+<blockquote>
+  <p>Accepts get method</p>
+</blockquote>
+
+<ul>
+<li>Add Pages: <code>127.0.0:8000/pcreator/v1/add-page/</code></li>
+</ul>
+
+<blockquote>
+  <p>Accepts post method only</p>
+
+  <ul>
+  <li>Set Page Markdown: <code>127.0.0.1:8000/v1/set-page-markdown/&lt;int:pk&gt;/</code> <br />
+  Accepts get put and patch methods</li>
+
+  <li>Get Page HTML: <code>127.0.0.1:8000/v1/get-page-html/&lt;int:pk&gt;/</code>
+  Accepts get method
+  get page html will return the html of the page and also generate the file and save on the server.
+  Accessible at <code>pages.microapi.dev/pages/page-slug/</code> </li>
+  </ul>
+
+  <p>NOTE: "int:pk" means id. </p>
+</blockquote>
+
+<h3 id="userauth">User auth</h3>
+
+<ul>
+<li>Register: <code>127.0.0:800/v1/register</code></li>
+</ul>
+
+<blockquote>
+  <p>NOTE: You will not be logged in automatically
+  Accepts only post method</p>
+
+  <ul>
+  <li>Login: <code>127.0.0:800/v1/login</code>
+  The login page takes two parameters;Username and password
+  Accepts only post method</li>
+  </ul>
+
+  <p>A token will be assigned upon login if the user exists. Else an error will be returned </p>
+</blockquote>
