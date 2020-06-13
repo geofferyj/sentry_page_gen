@@ -1,6 +1,8 @@
-from django.urls import path
+from django.urls import path, include, re_path
 from rest_framework.authtoken.views import obtain_auth_token  # <-- Here
 from site_pages.views import AddPageView, ListPageView, UpdatePageView, PageContentView, UserCreationView
+
+
 
 urlpatterns = [
     path('list_pages/',ListPageView.as_view() ),
@@ -9,5 +11,6 @@ urlpatterns = [
     path('retrieve_page_html/<str:slug>/',PageContentView.as_view() ),
     path('login/', obtain_auth_token, name='api_token_auth'),  
     path('register/', UserCreationView.as_view(), name='register'),
+    
 
 ] 

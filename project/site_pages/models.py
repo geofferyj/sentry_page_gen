@@ -4,7 +4,7 @@ import random
 import string
 
 def gen_id(ln=5):
-    ld = string.ascii_letters + string.digits
+    ld = string.ascii_lowercase + string.digits
     return '-'+''.join((random.choice(ld) for i in range(ln)))
 
 
@@ -18,7 +18,10 @@ class Page(models.Model):
     content = models.TextField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title) + gen_id()
+        if self.slug:
+            self.slug = self.slug
+        else:
+            self.slug = slugify(self.title) + gen_id()
         super().save(*args, **kwargs) # Call the real save() method
 
     def __str__(self):

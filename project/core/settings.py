@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
+    
 ]
 
 MIDDLEWARE = [
@@ -157,7 +158,16 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles'),]
 
 
 
-
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'Authorization':{
+        'USE_SESSION_AUTH': False
+        },
+}
 
 
 
