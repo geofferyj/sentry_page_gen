@@ -5,6 +5,17 @@ from  markdown import Markdown
 from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import HttpResponse
+import os
+
+def json_view(request):
+    module_dir = os.path.dirname(__file__)
+    file_path = os.path.join(module_dir, 'json.json')
+    with open(file_path, 'r') as file:
+        data_file = file.read()
+    return HttpResponse(data_file, content_type='application/json')
+
+
 
 class AddPageView(CreateAPIView):
     permission_classes = (IsAuthenticated,)
