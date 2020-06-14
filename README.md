@@ -1,12 +1,12 @@
 # REPO: team_sentry_pages
 
-### Installing requirements.
+## Installing requirements.
 ``` sh
 $ cd team_sentry_pages
 $ pip install -r requirements.txt
 ```
 >will install all necessary dependencies.
-### Running server.
+## Running server.
 ``` sh
 $ python manage.py runserver
 ```
@@ -22,7 +22,7 @@ $ python manage.py runserver
 
 click on the address to redirect to home page.
 
-## Admin Route..
+## Admin Route
 ```127.0.0.1/admin/```
 ### Admin interface login 
 ``` sh
@@ -31,7 +31,7 @@ Password: admin
 ```
 >Credentials will be change on deployment for security reasons.
 
-### Routes
+## Routes
 
 * List Pages:```127.0.0:8000/pcreator/v1/```
 >Accepts get method
@@ -47,7 +47,7 @@ Password: admin
 
 >NOTE: "int:pk" means id. 
 
-### User auth
+## User Authentication
 * Register: ```127.0.0:800/v1/register```
 > NOTE: You will not be logged in automatically
 >Accepts only post method
